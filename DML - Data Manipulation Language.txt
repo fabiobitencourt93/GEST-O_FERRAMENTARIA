@@ -86,20 +86,46 @@ INSERT INTO pecas (estampo_id, pos, quantidade, nome, material, tratamento_termi
 
 
 
--- Processos Sequenciais da MATRIZ DE CORTE (ID 1)
-INSERT INTO processos (peca_id, ordem_execucao, nome_operacao, maquina_sugerida) VALUES 
-(1, 1, 'Corte de Matéria Prima', 'Serra Fita'),
-(1, 2, 'Esquadrejamento e Desbaste', 'Fresadora Convencional'),
-(1, 3, 'Tratamento Térmico (Têmpera + Revenimento)', 'Forno'),
-(1, 4, 'Retífica Plana (Espessura)', 'Retífica Plana'),
-(1, 5, 'Eletroerosão a Fio (Perfis de corte)', 'Máquina Fio CNC'),
-(1, 6, 'Montagem e Ajuste', 'Bancada');
+-- Processos Sequenciais da Base Inferior (ID 1)
+INSERT INTO processos (peca_id, ordem_execucao, nome_operacao, maquina_sugerida, tempo_estimado_horas) VALUES 
+(1, 1, 'Desmontar porta estampo', 'Bancada de Ferramentas, pórtico'),
+(1, 2, 'Programação CNC', 'Software CAM'),
+(1, 3, 'Fresamento CNC', 'Centro de Usinagem'),
+(1, 4, 'Rebarbação e usinagem das roscas', 'Bancada de Ferramentas e Furadeira de Coluna'),
+(1, 5, 'Montagem das Buchas Guias e Ajustes', 'Bancada de Ferramentas');
 
--- Processos Sequenciais do PUNÇÃO (ID 3)
-INSERT INTO processos (peca_id, ordem_execucao, nome_operacao, maquina_sugerida) VALUES 
-(3, 1, 'Torneamento de Desbaste', 'Torno CNC'),
-(3, 2, 'Tratamento Térmico', 'Forno'),
-(3, 3, 'Retífica Cilíndrica', 'Retífica Cilíndrica');
+
+-- Processos Sequenciais da Base Superior (ID 2)
+INSERT INTO processos (peca_id, ordem_execucao, nome_operacao, maquina_sugerida, tempo_estimado_horas) VALUES 
+(2, 1, 'Desmontar porta estampo', 'Bancada de Ferramentas, Pórtico', 1),
+(2, 2, 'Programação CNC', 'Software CAM', 6),
+(2, 3, 'Fresamento CNC', 'Centro de Usinagem', 16),
+(2, 4, 'Rebarbação e usinagem das roscas', 'Bancada de Ferramentas e Furadeira de Coluna', 4),
+(2, 5, 'Montagem das Colunas Guias e Ajustes', 'Bancada de Ferramentas', 2.5);
+
+
+-- Processos Sequenciais da Placa Flutuante (ID 3)
+INSERT INTO processos (peca_id, ordem_execucao, nome_operacao, maquina_sugerida, tempo_estimado_horas) VALUES 
+(3, 1, 'Desmontar porta estampo', 'Bancada de Ferramentas, Pórtico', 1),
+(3, 2, 'Programação CNC', 'Software CAM', 6),
+(3, 3, 'Fresamento CNC', 'Centro de Usinagem', 16),
+(3, 4, 'Rebarbação e usinagem das roscas', 'Bancada de Ferramentas e Furadeira de Coluna', 4),
+(3, 5, 'Montagem das Colunas Guias e Ajustes', 'Bancada de Ferramentas', 2.5);
+
+-- Processos Sequenciais da Placa Porta Matriz 1 (ID 4)
+INSERT INTO processos (peca_id, ordem_execucao, nome_operacao, maquina_sugerida, tempo_estimado_horas) VALUES 
+(4, 1, 'Verificação de Matéria Prima', 'Bancada de Ferramentas', 0.25),
+(4, 2, 'Programação CNC - Centro de Usinagem', 'Software CAM', 3),
+(4, 3, 'Fresamento CNC', 'Centro de Usinagem', 12),
+(4, 4, 'Retificar faces', 'Retífica Plana', 2.5),
+(4, 5, 'Rebarbação e Usinagem das roscas', 'Bancada de Ferramentas e Furadeira de Coluna', 3),
+(4, 6, 'Programação CNC - Erosão a fio', 'Software CAM', 4),
+(4, 7, 'Cortar Janelas dos Insertos', 'Erosão a fio', 24),
+(4, 8, 'Montagem dos Insertos', 'Retífica Plana e Bancada', 24),
+(4, 9, 'Cortar Perfis dos Insertos', 'Erosão a fio', 8);
+
+
+
 
 -- =======================================================================
 -- ESTAMPO 2: PROGRESSIVO (DOBRA) - ID 2
