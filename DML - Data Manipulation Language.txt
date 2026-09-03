@@ -1,0 +1,136 @@
+-- 1. Criando o Projeto
+INSERT INTO projetos (nome, cliente, data_inicio) 
+VALUES ('Destacador Macho', 'SENAI', 19/01/2026),('Destacador Fêmea', 'SENAI', 19/01/2026),('Crashform', 'SENAI', 19/01/2026);
+
+-- 2. Criando os 3 Estampos para o Projeto (ID = 1)
+INSERT INTO estampos (projeto_id, nome, tipo) VALUES 
+(1, 'Estampo Progressivo 01 - Destacador Macho', 'Progressivo'),
+(2, 'Estampo Progressivo 02 - Destacador Fêmea', 'Progressivo'),
+(3, 'Estampo de Repuxo - Crashform', 'Repuxo');
+
+-- =======================================================================
+-- ESTAMPO 1: PROGRESSIVO (DESTACADOR MACHO) - ID 1
+-- =======================================================================
+-- Peças
+INSERT INTO pecas (estampo_id, pos, quantidade, nome, material, tratamento_termico) VALUES 
+('1','1','1','placa base inferior','sae 1020','sem tratamento'),
+('1','2','1','placa base superior','sae 1020','sem tratamento'),
+('1','3','1','placa flutuante','sae 1020','sem tratamento'),
+('1','4','1','placa porta matriz - 1','sae 1045','sem tratamento'),
+('1','5','1','placa porta matriz - 2','sae 1045','sem tratamento'),
+('1','6','1','placa porta punção 1','sae 1045','sem tratamento'),
+('1','7','1','placa porta punção 2','sae 1045','sem tratamento'),
+('1','8','1','placa de choque inferior - 1','vnd','temperado e revenido'),
+('1','9','1','placa de choque inferior - 2','vnd','temperado e revenido'),
+('1','10','1','placa de choque superior 1','vnd','temperado e revenido'),
+('1','11','1','placa de choque superior 2','vnd','temperado e revenido'),
+('1','12','1','placa de choque superior 3','vnd','temperado e revenido'),
+('1','13','1','placa pisadora 1','vnd','temperado e revenido'),
+('1','14','1','placa pisadora 2','vnd','temperado e revenido'),
+('1','15','1','placa pisadora 3','vnd','temperado e revenido'),
+('1','16','1','placa pisadora 4','vnd','temperado e revenido'),
+('1','17','2','matriz - piloto ø3,02','d2','temperado e revenido'),
+('1','18','4','matriz - furador ø3,2','d2','temperado e revenido'),
+('1','19','1','matriz - faca de avanço','d2','temperado e revenido'),
+('1','20','1','matriz - perfil externo 1.1','d2','temperado e revenido'),
+('1','21','1','matriz - perfil externo 1.2','d2','temperado e revenido'),
+('1','22','1','matriz - perfil externo 1.3','d2','temperado e revenido'),
+('1','23','1','matriz - perfil externo 2.1','d2','temperado e revenido'),
+('1','24','1','matriz - perfil externo 2.2','d2','temperado e revenido'),
+('1','25','1','matriz - perfil externo 2.3','d2','temperado e revenido'),
+('1','26','1','matriz - dobra 90º','d2','temperado e revenido'),
+('1','27','1','matriz - corte final 1','d2','temperado e revenido'),
+('1','28','1','matriz - corte final 2','d2','temperado e revenido'),
+('1','29','1','matriz - retalhador 1','d2','temperado e revenido'),
+('1','30','1','matriz - retalhador 2','d2','temperado e revenido'),
+('1','31','2','punção - piloto ø3,02','vc 131','temperado e revenido'),
+('1','32','4','punção - furador ø3,2','vc 131','temperado e revenido'),
+('1','33','1','punção - faca de avanço','vc 131','temperado e revenido'),
+('1','34','1','punção - perfil externo 1.1','vc 131','temperado e revenido'),
+('1','35','1','punção - perfil externo 1.2','vc 131','temperado e revenido'),
+('1','36','1','punção - perfil externo 1.3','vc 131','temperado e revenido'),
+('1','37','1','punção - perfil externo 2.1','vc 131','temperado e revenido'),
+('1','38','1','punção - perfil externo 2.2','vc 131','temperado e revenido'),
+('1','39','1','punção - perfil externo 2.3','vc 131','temperado e revenido'),
+('1','40','1','punção - dobra 90º','vc 131','temperado e revenido'),
+('1','41','2','punção - corte final','vc 131','temperado e revenido'),
+('1','42','2','punção - retalhador','vc 131','temperado e revenido'),
+('1','43','1','calço inferior 1','sae 1020','sem tratamento'),
+('1','44','1','calço inferior 2','sae 1020','sem tratamento'),
+('1','45','1','calço inferior 3','sae 1020','sem tratamento'),
+('1','46','1','calço inferior 4','sae 1020','sem tratamento'),
+('1','47','1','calço superior 1','sae 1020','sem tratamento'),
+('1','48','1','calço superior 2','sae 1020','sem tratamento'),
+('1','49','1','calço superior 3','sae 1020','sem tratamento'),
+('1','50','1','apoio guia de entrada','sae 1020','sem tratamento'),
+('1','51','1','régua esquerda','vnd','temperado e revenido'),
+('1','52','1','régua direita','vnd','temperado e revenido'),
+('1','53','8','régua cilíndrica','sae 1045','sem tratamento'),
+('1','54','1','suporte punção retalhador','sae 1020','sem tratamento'),
+('1','56','1','suporte - tope faca de avanço','sae 1045','sem tratamento'),
+('1','57','1','tope faca de avanço','sae 1045','temperado e revenido'),
+('1','58','16','piloto','vnd','temperado e revenido'),
+('1','59','10','extrator do piloto','sae 1045','sem tratamento'),
+('1','60','4','limitador superior','sae 1045','temperado e revenido'),
+('1','61','4','limitador inferior','sae 1045','temperado e revenido'),
+('1','62','10','estabilizador superior','sae 1045','temperado e revenido'),
+('1','63','10','estabilizador inferior','sae 1045','temperado e revenido'),
+('1','64','6','batoque punção cilíndrico','vnd','temperado e revenido'),
+('1','65','1','pino puxador - tope inicial','sae 1020','sem tratamento'),
+('1','66','1','tope_inicial','sae 1045','sem tratamento'),
+('1','67','1','puxador_tope_inicial','sae 1020','sem tratamento'),
+('1','68','1','parafuso_tope_inicial','sae 1020','sem tratamento');
+
+
+
+
+
+
+-- Processos Sequenciais da MATRIZ DE CORTE (ID 1)
+INSERT INTO processos (peca_id, ordem_execucao, nome_operacao, maquina_sugerida) VALUES 
+(1, 1, 'Corte de Matéria Prima', 'Serra Fita'),
+(1, 2, 'Esquadrejamento e Desbaste', 'Fresadora Convencional'),
+(1, 3, 'Tratamento Térmico (Têmpera + Revenimento)', 'Forno'),
+(1, 4, 'Retífica Plana (Espessura)', 'Retífica Plana'),
+(1, 5, 'Eletroerosão a Fio (Perfis de corte)', 'Máquina Fio CNC'),
+(1, 6, 'Montagem e Ajuste', 'Bancada');
+
+-- Processos Sequenciais do PUNÇÃO (ID 3)
+INSERT INTO processos (peca_id, ordem_execucao, nome_operacao, maquina_sugerida) VALUES 
+(3, 1, 'Torneamento de Desbaste', 'Torno CNC'),
+(3, 2, 'Tratamento Térmico', 'Forno'),
+(3, 3, 'Retífica Cilíndrica', 'Retífica Cilíndrica');
+
+-- =======================================================================
+-- ESTAMPO 2: PROGRESSIVO (DOBRA) - ID 2
+-- =======================================================================
+-- Peças
+INSERT INTO pecas (estampo_id, nome, material) VALUES 
+(2, 'Matriz de Dobra', 'Aço D2'),
+(2, 'Punção de Dobra', 'Aço D2');
+
+-- Processos Sequenciais do PUNÇÃO DE DOBRA (ID 5)
+INSERT INTO processos (peca_id, ordem_execucao, nome_operacao, maquina_sugerida) VALUES 
+(5, 1, 'Esquadrejamento', 'Fresadora'),
+(5, 2, 'Usinagem de Perfil 3D', 'Centro de Usinagem CNC'),
+(5, 3, 'Tratamento Térmico', 'Forno'),
+(5, 4, 'Retífica Plana (Base)', 'Retífica Plana'),
+(5, 5, 'Polimento nas áreas de atrito', 'Bancada (Manual)');
+
+-- =======================================================================
+-- ESTAMPO 3: REPUXO - ID 3
+-- =======================================================================
+-- Peças (Repuxo exige peças específicas de conformação)
+INSERT INTO pecas (estampo_id, nome, material) VALUES 
+(3, 'Punção de Repuxo', 'Ferro Fundido Nodular / Aço D2'),
+(3, 'Matriz Cavidade de Repuxo', 'Aço D2'),
+(3, 'Prensa-Chapas (Sujeitador)', 'Aço P20');
+
+-- Processos Sequenciais da MATRIZ DE REPUXO (ID 7)
+INSERT INTO processos (peca_id, ordem_execucao, nome_operacao, maquina_sugerida) VALUES 
+(7, 1, 'Faceamento e Esquadrejamento', 'Fresadora Grande Porte'),
+(7, 2, 'Desbaste de Cavidade 3D', 'Centro de Usinagem CNC'),
+(7, 3, 'Tratamento Térmico', 'Forno'),
+(7, 4, 'Acabamento Fino 3D', 'Centro de Usinagem CNC (Alta Rotação)'),
+(7, 5, 'Polimento Espelhado (Crucial p/ Repuxo)', 'Bancada (Chicote/Manual)'),
+(7, 6, 'Try-out e Ajuste de Folgas', 'Prensa de Try-out');

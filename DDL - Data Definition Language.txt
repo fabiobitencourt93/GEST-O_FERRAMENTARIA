@@ -1,0 +1,64 @@
+-- Criação das Tabelas Principais
+
+CREATE TABLE projetos (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    cliente VARCHAR(100),
+    data_inicio DATE NOT NULL,
+    status VARCHAR(50) DEFAULT 'Em Planejamento'
+);
+
+CREATE TABLE estampos (
+    id SERIAL PRIMARY KEY,
+    projeto_id INT REFERENCES projetos(id) ON DELETE CASCADE,
+    nome VARCHAR(100) NOT NULL,
+    tipo VARCHAR(50) NOT NULL -- 'Progressivo' ou 'Repuxo'
+);
+
+CREATE TABLE pecas (
+    id SERIAL PRIMARY KEY,
+    estampo_id INT REFERENCES estampos(id) ON DELETE CASCADE,
+    pos INTEGER NOT NULL,
+    quantidade INT DEFAULT 1,
+    nome VARCHAR(100) NOT NULL,
+    material VARCHAR(50),
+    tratamento_termico VARCHAR (50) NOT NULL,    
+    status VARCHAR(50) DEFAULT 'Aguardando Início'
+);
+
+CREATE TABLE processos (
+    id SERIAL PRIMARY KEY,
+    peca_id INT REFERENCES pecas(id) ON DELETE CASCADE,
+    ordem_execucao INT NOT NULL, -- Define a sequência (1, 2, 3...)
+    nome_operacao VARCHAR(100) NOT NULL,
+    maquina_sugerida VARCHAR(100),
+    tempo_estimado_horas DECIMAL(5,2)
+);
+
+CREATE TABLE operadores (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    especialidade VARCHAR(50)
+);
+
+CREATE TABLE apontamentos (
+    id SERIAL PRIMARY KEY,
+    processo_id INT REFERENCES processos(id),
+    operador_id INT REFERENCES operadores(id),
+    data_hora_inicio TIMESTAMP NOT NULL,
+    data_hora_fim TIMESTAMP,
+    status VARCHAR(50) DEFAULT 'Em Andamento', -- 'Pausado', 'Concluído',
+    observacoes TEXT
+);
+
+CREATE TABLE ocorrencias (
+    id SERIAL PRIMARY KEY,
+    apontamento_id INT REFERENCES apontamentos(id),
+    tipo_problema VARCHAR(100) NOT NULL, -- Ex: 'Quebra de Ferramenta', 'Falta de Material'
+    descricao TEXT,
+    atraso_gerado_horas DECIMAL(5,2)
+);
+
+select * from projetos;
+select * from estampos;
+select * from pecas;
