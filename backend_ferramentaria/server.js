@@ -54,7 +54,45 @@ app.get('/api/estampos/:id/pecas', async (req, res) => {
     }
 });
 
+// ==========================================
+// ROTA 4: Iniciar Apontamento (Terminal do Operador)
+// ==========================================
+app.post('/api/apontamentos/iniciar', async (req, res) => {
+    try {
+        const { processo_id, operador_id } = req.body;
+        
+        // Insere o registro pegando a data/hora automática do servidor (CURRENT_TIMESTAMP)
+        const result = await pool.query(
+            `INSERT INTO apontamentos (processo_id, operador_id, data_hora_inicio) 
+             VALUES ($1, $2, CURRENT_TIMESTAMP) RETURNING *`,
+            [processo_id, operador_id]
+        );
+        
+        res.json({ sucesso: true, apontamento: result.rows[0] });
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Erro ao iniciar a operação. Verifique se o ID do Operador existe.');
+    }
+});
+
+
+
 // Inicia o Servidor
 app.listen(3000, () => {
     console.log('✅ Servidor Back-end rodando na porta 3000');
+});
+
+// ROTA 3: Lista os Processos de uma Peça
+app.get('/api/pecas/:id/processos', async (req, res) => {
+    try {
+        const { id } = req.params;
+        const result = await pool.query(
+            'SELECT * FROM processos WHERE peca_id = $1 ORDER BY ordem_execucao ASC',
+            [id]
+        );
+        res.json(result.rows);
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Erro ao buscar processos');
+    }
 });
